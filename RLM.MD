@@ -1,0 +1,9 @@
+The formal definition
+
+Consider a general setup of a language model M receiving a query q with some associated, potentially long context C = [c₁, c₂, …, cₘ]. The standard approach is to treat M(q, C) like a black-box function call, which takes a query and context and returns some str output. We retain this frame of view, but define a thin scaffold on top of the model to provide a more expressive and interpretable function call RLM_M(q, C) with the same input and output spaces. Formally, a recursive language model RLM_M(q, C) over an environment E similarly receives a query q and some associated, potentially long context C = [c₁, c₂, …, cₘ] and returns some str output.
+
+The primary difference is that we provide the model a tool call RLM_M(q̂, Ĉ), which spawns an isolated sub-RLM instance using a new query q̂ and a transformed version of the context Ĉ with its own isolated environment Ê; eventually, the final output of this recursive callee is fed back into the environment of the original caller. The environment E abstractly determines the control flow of how the language model M is prompted, queried, and handled to provide a final output.
+
+In this paper, we specifically explore the use of a Python REPL environment that stores the input context C as a variable in memory. This specific choice of environment enables the language model to peek at, partition, transform, and map over the input context and use recursive LMs to answer sub-queries about this context. Unlike prior agentic methods that rigidly define these workflow patterns, RLMs defer these decisions entirely to the language model.
+
+Finally, we note that particular choices of environments E are flexible and are a generalization of a base model call: the simplest possible environment E₀ queries the model M with input query and context q, C and returns the model output as the final answer.
