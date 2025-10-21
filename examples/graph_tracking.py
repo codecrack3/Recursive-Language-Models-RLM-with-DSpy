@@ -289,7 +289,7 @@ def example_with_history_tracking():
     rlm = RLM(
         model="openrouter/anthropic/claude-sonnet-4.5",
         recursive_model="openrouter/anthropic/claude-haiku-4.5",
-        enable_graph_tracking=False,
+        enable_graph_tracking=True,
         enable_history=False,  # Enable LLM call history,
         enable_logging=True,
         graph_output_path="./debug_graph.html",
