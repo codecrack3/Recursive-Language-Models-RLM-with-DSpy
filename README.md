@@ -215,7 +215,7 @@ The interactive HTML visualization shows:
 - **Performance metrics**: Iterations and LLM calls per node
 - **Error tracking**: Which nodes encountered issues
 
-![Graph Visualization](docs/graph_example.png)
+![Graph Visualization](images/graph_example.png)
 
 **Programmatic access:**
 ```python
